@@ -23,15 +23,8 @@ module Ubl
           build_header(xml) do |xml|
             xml["cbc"].InvoiceTypeCode "380"
           end
-
           build_document_reference(xml, "CommercialInvoice")
-
-          build_party(xml, @supplier, "AccountingSupplierParty")
-          build_party(xml, @customer, "AccountingCustomerParty")
-
-          build_tax_total(xml)
-          build_monetary_total(xml)
-          build_invoice_lines(xml)
+          build_content(xml)
         end
       end
       builder.to_xml
@@ -56,15 +49,8 @@ module Ubl
           build_header(xml) do |xml|
             xml["cbc"].CreditNoteTypeCode "381"
           end
-
           build_document_reference(xml, "CreditNote")
-
-          build_party(xml, @supplier, "AccountingSupplierParty")
-          build_party(xml, @customer, "AccountingCustomerParty")
-
-          build_tax_total(xml)
-          build_monetary_total(xml)
-          build_invoice_lines(xml)
+          build_content(xml)
         end
       end
       builder.to_xml

@@ -25,6 +25,8 @@ def create_invoice(extension = nil)
     postal_code: "1012"
   )
 
+  invoice.add_payment_means(iban: "BE1234567891234", bic: "GEBABEBB")
+
   invoice.add_line(name: "Consulting Services", quantity: 10, unit_price: 100.0, tax_rate: 21.0)
   invoice.add_line(name: "Software License", quantity: 1, unit_price: 500.0, tax_rate: 21.0)
 
@@ -45,6 +47,7 @@ class TestUbl < Minitest::Test
     Tempfile.create("invoice.xml") do |invoice_file|
       File.write(invoice_file, content)
       errors = Ubl.validate_invoice(invoice_file.path)
+      display_validation_errors(errors)
       assert_equal 0, errors.length
     end
   end
@@ -56,6 +59,7 @@ class TestUbl < Minitest::Test
     Tempfile.create("invoice.xml") do |invoice_file|
       File.write(invoice_file, content)
       errors = Ubl.validate_invoice(invoice_file.path, extension:)
+      display_validation_errors(errors)
       assert_equal 0, errors.length
     end
   end

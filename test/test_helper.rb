@@ -5,10 +5,8 @@ $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "minitest/autorun"
 require "ubl"
 
-def validate_invoice(ubl_file_path, extension)
-  errors = Ubl.validate_invoice(ubl_file_path, extension)
+def display_validation_errors(errors)
   errors.each do |e|
-    p e
+    puts e
   end
-  errors
 end

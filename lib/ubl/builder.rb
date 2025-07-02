@@ -51,6 +51,13 @@ module Ubl
       }
     end
 
+    def add_payment_means(iban:, bic:)
+      @payment_means = {
+        iban: iban,
+        bic: bic
+      }
+    end
+
     def add_line(name:, quantity:, unit_price:, tax_rate: 21.0, unit: "ZZ")
       line_extension_amount = (quantity * unit_price).round(2)
       tax_amount = (line_extension_amount * (tax_rate / 100.0)).round(2)
@@ -109,6 +116,15 @@ module Ubl
           end
         end
       end
+    end
+
+    def build_content(xml)
+      build_party(xml, @supplier, "AccountingSupplierParty")
+      build_party(xml, @customer, "AccountingCustomerParty")
+      build_payment_means(xml)
+      build_tax_total(xml)
+      build_monetary_total(xml)
+      build_invoice_lines(xml)
     end
 
     def add_attachment(id, filename)
@@ -250,6 +266,20 @@ module Ubl
         xml["cbc"].TaxExclusiveAmount(currencyID: @currency) { xml.text sprintf("%.2f", line_extension_amount) }
         xml["cbc"].TaxInclusiveAmount(currencyID: @currency) { xml.text sprintf("%.2f", @legal_monetary_total) }
         xml["cbc"].PayableAmount(currencyID: @currency) { xml.text sprintf("%.2f", @legal_monetary_total) }
+      end
+    end
+
+    def build_payment_means(xml)
+      return unless @payment_means
+
+      xml["cac"].PaymentMeans do
+        xml["cbc"].PaymentMeansCode "1"
+        xml["cac"].PayeeFinancialAccount do
+          xml["cbc"].ID @payment_means[:iban]
+          xml["cac"].FinancialInstitutionBranch do
+            xml["cbc"].ID @payment_means[:bic]
+          end
+        end
       end
     end
   end
