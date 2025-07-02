@@ -4,6 +4,7 @@ $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 
 require "minitest/autorun"
 require "validate"
+require "ubl"
 
 def validate(ubl_file_path, ubl_be)
   validator = UBLValidator.new

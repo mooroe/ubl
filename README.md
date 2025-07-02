@@ -18,9 +18,42 @@ if bundler is not being used to manage dependencies, install the gem by executin
 gem install ubl
 ```
 
-## usage
+## Example
 
-Here is an example: https://github.com/roel4d/ubl/blob/main/test/test_invoice.rb
+```
+require "ubl"
+
+invoice = Ubl::Invoice.new
+invoice.invoice_nr = "INV-2025-001"
+invoice.issue_date = Date.new(2025, 6, 28)
+invoice.due_date = Date.new(2025, 7, 28)
+invoice.currency = "EUR"
+invoice.pdffile = __dir__ + "/invoice_test.pdf"
+
+invoice.add_supplier(
+  name: "ACME Corp",
+  country: "BE",
+  vat_id: "BE0123456749",
+  address: "Main Street 123",
+  city: "Brussels",
+  postal_code: "1000"
+)
+
+invoice.add_customer(
+  name: "Customer Ltd",
+  country: "BE",
+  vat_id: "BE0123456749",
+  address: "Customer Lane 456",
+  city: "Antwerpen",
+  postal_code: "1012"
+)
+
+invoice.add_line(name: "Consulting Services", quantity: 10, unit_price: 100.0, tax_rate: 21.0)
+invoice.add_line(name: "Software License", quantity: 1, unit_price: 500.0, tax_rate: 21.0)
+
+invoice.build
+```
+
 
 ## development
 
