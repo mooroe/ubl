@@ -2,12 +2,14 @@ PATH
   remote: .
   specs:
     ubl (0.0.2)
+      base64 (~> 0.3.0)
       nokogiri (~> 1.18)
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.3)
+    base64 (0.3.0)
     colorize (1.1.0)
     date (3.4.1)
     erb (5.0.1)
