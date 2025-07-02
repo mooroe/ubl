@@ -1,8 +1,8 @@
 require_relative "ubl/builder"
 
 ##
-# The Invoice and CreditNote class generates UBL (Universal Business Language) compliant XML
-# documents following PEPPOL standards.
+# Generate UBL (Universal Business Language) documents,
+# such as invoices and credit notes, compliant with the Peppol network.
 module Ubl
   class Invoice < UblBuilder
     ##

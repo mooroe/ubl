@@ -2,7 +2,7 @@
 
 # Ubl
 
-Generate UBL invoices and credit notes for Peppol
+Generate UBL (Universal Business Language) documents, such as invoices and credit notes, compliant with the Peppol network.
 
 ## installation
 
@@ -25,10 +25,7 @@ require "ubl"
 
 invoice = Ubl::Invoice.new
 invoice.invoice_nr = "INV-2025-001"
-invoice.issue_date = Date.new(2025, 6, 28)
-invoice.due_date = Date.new(2025, 7, 28)
-invoice.currency = "EUR"
-invoice.pdffile = __dir__ + "/invoice_test.pdf"
+invoice.pdffile = "./invoice.pdf"
 
 invoice.add_supplier(
   name: "ACME Corp",
@@ -54,6 +51,10 @@ invoice.add_line(name: "Software License", quantity: 1, unit_price: 500.0, tax_r
 invoice.build
 ```
 
+If you need the UBL.BE version:
+```ruby
+invoice = Ubl::Invoice.new("UBL_BE")
+```
 
 ## development
 
