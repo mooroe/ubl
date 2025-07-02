@@ -56,6 +56,16 @@ If you need the UBL.BE version:
 invoice = Ubl::Invoice.new("UBL_BE")
 ```
 
+You can also validate the result. 
+You need Docker for the schematron validation.
+With `schematron: false` you can disable this and only the xsd validation will run.
+```ruby
+Tempfile.create("invoice.xml") do |invoice_file|
+  File.write(invoice_file, content)
+  p Ubl.validate_invoice(invoice_file.path, extension: "UBL_BE", schematron: true)
+end
+```
+
 ## development
 
 after checking out the repo, run `bin/setup` to install dependencies. then, run `rake test` to run the tests. you can also run `bin/console` for an interactive prompt that will allow you to experiment.

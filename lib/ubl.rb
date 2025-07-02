@@ -1,4 +1,5 @@
 require_relative "ubl/builder"
+require_relative "ubl/validate"
 
 ##
 # Generate UBL (Universal Business Language) documents,
@@ -68,5 +69,33 @@ module Ubl
       end
       builder.to_xml
     end
+  end
+
+  ##
+  # Validate an invoice
+  #
+  # == Parameters
+  # * +path+       - The path to the XML invoice that needs validation.
+  # * +extension+  - Set to +"UBL_BE"+ to generate UBL.BE compliant documents.
+  #                  Defaults to +nil+ for standard PEPPOL format.
+  # * +schematron+ - If +true+, run a Schematron validation using Docker.
+  #                  Requires Docker to be installed and running. Defaults to +true+.
+  def self.validate_invoice(path, extension: nil, schematron: true)
+    validator = Validator.new(extension:, schematron:)
+    validator.validate_invoice(path)
+  end
+
+  ##
+  # Validate a credit note
+  #
+  # == Parameters
+  # * +path+       - The path to the XML credit note that needs validation.
+  # * +extension+  - Set to +"UBL_BE"+ to generate UBL.BE compliant documents.
+  #                  Defaults to +nil+ for standard PEPPOL format.
+  # * +schematron+ - If +true+, run a Schematron validation using Docker.
+  #                  Requires Docker to be installed and running. Defaults to +true+.
+  def self.validate_credit_note(path, extension: nil, schematron: true)
+    validator = Validator.new(extension:, schematron:)
+    validator.validate_credit_note(path)
   end
 end

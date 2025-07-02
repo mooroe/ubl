@@ -5,9 +5,6 @@ require "test_helper"
 def create_invoice(extension = nil)
   invoice = Ubl::Invoice.new(extension)
   invoice.invoice_nr = "INV-2025-001"
-  invoice.issue_date = Date.new(2025, 6, 28)
-  invoice.due_date = Date.new(2025, 7, 28)
-  invoice.currency = "EUR"
   invoice.pdffile = __dir__ + "/invoice_test.pdf"
 
   invoice.add_supplier(
@@ -47,17 +44,18 @@ class TestUbl < Minitest::Test
     content = invoice.build
     Tempfile.create("invoice.xml") do |invoice_file|
       File.write(invoice_file, content)
-      errors = validate(invoice_file.path, false)
+      errors = Ubl.validate_invoice(invoice_file.path)
       assert_equal 0, errors.length
     end
   end
 
   def test_valid_be_invoice
-    invoice = create_invoice("UBL_BE")
+    extension = "UBL_BE"
+    invoice = create_invoice(extension)
     content = invoice.build
     Tempfile.create("invoice.xml") do |invoice_file|
       File.write(invoice_file, content)
-      errors = validate(invoice_file.path, true)
+      errors = Ubl.validate_invoice(invoice_file.path, extension:)
       assert_equal 0, errors.length
     end
   end

@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    ubl (0.1.0)
+    ubl (0.1.1)
       base64 (~> 0.3.0)
+      colorize (~> 1.1)
       nokogiri (~> 1.18)
 
 GEM
@@ -105,7 +106,6 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  colorize (~> 1.1)
   irb
   minitest (~> 5.16)
   rake (~> 13.0)
