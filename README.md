@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/ubl.svg)](https://badge.fury.io/rb/ubl)
+
 # Ubl
 
 Generate UBL invoices and credit notes for Peppol
@@ -18,7 +20,7 @@ gem install ubl
 
 ## usage
 
-todo: write usage instructions here
+Here is an example: https://github.com/roel4d/ubl/blob/main/test/test_invoice.rb
 
 ## development
 
