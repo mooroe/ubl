@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["roel4d"]
   spec.email = ["roel4d@webding.org"]
 
-  spec.summary = "Generate UBL documents for Peppol"
-  spec.description = "Generate UBL (Universal Business Language) documents, such as invoices and credit notes, compliant with the Peppol network."
+  spec.summary = "Generate and validate UBL documents for Peppol"
+  spec.description = "Generate and validate UBL (Universal Business Language) documents, such as invoices and credit notes, compliant with the Peppol network."
   spec.homepage = "https://github.com/roel4d/ubl"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.1.0"

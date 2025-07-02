@@ -2,7 +2,7 @@
 
 # Ubl
 
-Generate UBL (Universal Business Language) documents, such as invoices and credit notes, compliant with the Peppol network.
+Generate and validate UBL (Universal Business Language) documents, such as invoices and credit notes, compliant with the Peppol network.
 
 ## installation
 

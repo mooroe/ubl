@@ -2,7 +2,7 @@ require_relative "ubl/builder"
 require_relative "ubl/validate"
 
 ##
-# Generate UBL (Universal Business Language) documents,
+# Generate and validate UBL (Universal Business Language) documents,
 # such as invoices and credit notes, compliant with the Peppol network.
 module Ubl
   class Invoice < UblBuilder
