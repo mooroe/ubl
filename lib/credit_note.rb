@@ -2,7 +2,7 @@ require_relative "ubl/builder"
 
 module Ubl
   class CreditNote < UblBuilder
-    def initialize(ubl_be)
+    def initialize(ubl_be = false)
       super
     end
 
