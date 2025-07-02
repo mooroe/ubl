@@ -1,8 +1,18 @@
 require_relative "ubl/builder"
 
+##
+# The Invoice and CreditNote class generates UBL (Universal Business Language) compliant XML
+# documents following PEPPOL standards.
 module Ubl
   class Invoice < UblBuilder
-    def initialize(ubl_be = false)
+    ##
+    # Creates a new Invoice instance.
+    #
+    # == Parameters
+    # * +extension+ - (String) Optional. Set to +"UBL_BE"+ to generate UBL.BE compliant invoices
+    #   for Belgian requirements. Defaults to +nil+ for standard PEPPOL format.
+    #
+    def initialize(extension = nil)
       super
     end
 
@@ -28,7 +38,14 @@ module Ubl
   end
 
   class CreditNote < UblBuilder
-    def initialize(ubl_be = false)
+    ##
+    # Creates a new CreditNote instance.
+    #
+    # == Parameters
+    # * +extension+ - (String) Optional. Set to +"UBL_BE"+ to generate UBL.BE compliant
+    #   credit notes for Belgian requirements. Defaults to +nil+ for standard PEPPOL format.
+    #
+    def initialize(extension = nil)
       super
     end
 

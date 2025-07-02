@@ -5,8 +5,6 @@ require "date"
 require "base64"
 
 module Ubl
-  class Error < StandardError; end
-
   class UblBuilder
     attr_accessor :invoice_nr, :issue_date, :due_date, :currency, :supplier,
       :customer, :invoice_lines, :tax_total, :legal_monetary_total, :pdffile
@@ -15,8 +13,8 @@ module Ubl
     CUSTOMIZATION_UBL_BE = "urn:cen.eu:en16931:2017#conformant#urn:UBL.BE:1.0.0.20180214"
     PROFILE_ID = "urn:fdc:peppol.eu:2017:poacc:billing:01:1.0"
 
-    def initialize(ubl_be = false)
-      @ubl_be = ubl_be
+    def initialize(extension = nil)
+      @ubl_be = extension == "UBL_BE"
       @issue_date = Date.today
       @due_date = @issue_date + 30
       @currency = "EUR"

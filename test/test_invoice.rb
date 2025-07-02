@@ -2,8 +2,8 @@
 
 require "test_helper"
 
-def create_invoice(ubl_be)
-  invoice = Ubl::Invoice.new(ubl_be)
+def create_invoice(extension = nil)
+  invoice = Ubl::Invoice.new(extension)
   invoice.invoice_nr = "INV-2025-001"
   invoice.issue_date = Date.new(2025, 6, 28)
   invoice.due_date = Date.new(2025, 7, 28)
@@ -36,14 +36,14 @@ end
 
 class TestUbl < Minitest::Test
   def test_sum
-    invoice = create_invoice(false)
+    invoice = create_invoice
     tax = 10 * 100 * 0.21 + 1 * 500 * 0.21
     assert_equal tax, invoice.tax_total
     assert_equal 1000 + 500 + tax, invoice.legal_monetary_total
   end
 
   def test_valid_invoice
-    invoice = create_invoice(false)
+    invoice = create_invoice
     content = invoice.build
     Tempfile.create("invoice.xml") do |invoice_file|
       File.write(invoice_file, content)
@@ -53,7 +53,7 @@ class TestUbl < Minitest::Test
   end
 
   def test_valid_be_invoice
-    invoice = create_invoice(true)
+    invoice = create_invoice("UBL_BE")
     content = invoice.build
     Tempfile.create("invoice.xml") do |invoice_file|
       File.write(invoice_file, content)

@@ -20,7 +20,7 @@ gem install ubl
 
 ## Example
 
-```
+```ruby
 require "ubl"
 
 invoice = Ubl::Invoice.new
