@@ -27,7 +27,7 @@ def create_invoice(extension = nil)
 
   invoice.add_payment_means(iban: "BE1234567891234", bic: "GEBABEBB")
 
-  invoice.add_line(name: "Consulting Services", quantity: 10, unit_price: 100.0, tax_rate: 21.0)
+  invoice.add_line(name: "Consulting", description: "More consulting", quantity: 10, unit_price: 100.0, tax_rate: 21.0)
   invoice.add_line(name: "Software License", quantity: 1, unit_price: 500.0, tax_rate: 21.0)
 
   invoice

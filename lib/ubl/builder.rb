@@ -58,12 +58,13 @@ module Ubl
       }
     end
 
-    def add_line(name:, quantity:, unit_price:, tax_rate: 21.0, unit: "ZZ")
+    def add_line(name:, quantity:, unit_price:, description: name, tax_rate: 21.0, unit: "ZZ")
       line_extension_amount = (quantity * unit_price).round(2)
       tax_amount = (line_extension_amount * (tax_rate / 100.0)).round(2)
 
       @invoice_lines << {
         id: (@invoice_lines.length + 1).to_s,
+        description: description,
         name: name,
         quantity: quantity,
         unit: unit,
@@ -179,6 +180,7 @@ module Ubl
           end
 
           xml["cac"].Item do
+            xml["cbc"].Description line[:description]
             xml["cbc"].Name line[:name]
             xml["cac"].ClassifiedTaxCategory do
               xml["cbc"].ID get_tax_category_id(line[:tax_rate])
