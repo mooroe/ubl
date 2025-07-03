@@ -1,5 +1,3 @@
-[![Gem Version](https://badge.fury.io/rb/ubl.svg)](https://badge.fury.io/rb/ubl)
-
 # Ubl
 
 Generate and validate UBL (Universal Business Language) documents, such as invoices and credit notes, compliant with the Peppol network.
