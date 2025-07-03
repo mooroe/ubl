@@ -139,6 +139,10 @@ module Ubl
         xml["cac"].Party do
           xml["cbc"].EndpointID(schemeID: "0208") { xml.text party_data[:vat_id].gsub(/^[A-Za-z]+/, "") }
 
+          xml["cac"].PartyName do
+            xml["cbc"].Name party_data[:name]
+          end
+
           if party_data[:address]
             xml["cac"].PostalAddress do
               xml["cbc"].StreetName party_data[:address] if party_data[:address]
