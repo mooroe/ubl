@@ -5,17 +5,17 @@ require_relative "lib/ubl/version"
 Gem::Specification.new do |spec|
   spec.name = "ubl"
   spec.version = Ubl::VERSION
-  spec.authors = ["roel4d"]
-  spec.email = ["roel4d@webding.org"]
+  spec.authors = ["mooroe"]
+  spec.email = ["roeland@webding.org"]
 
   spec.summary = "Generate and validate UBL documents for Peppol"
   spec.description = "Generate and validate UBL (Universal Business Language) documents, such as invoices and credit notes, compliant with the Peppol network."
-  spec.homepage = "https://github.com/roel4d/ubl"
+  spec.homepage = "https://github.com/mooroe/ubl"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.1.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/roel4d/ubl"
+  spec.metadata["source_code_uri"] = "https://github.com/mooroe/ubl"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.

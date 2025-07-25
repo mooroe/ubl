@@ -48,7 +48,7 @@ module Ubl
 
     def validate_schematron(invoice_file)
       env = @ubl_be ? "-e UBL_BE=true" : ""
-      cmd = "docker run --rm #{env} -v #{invoice_file}:/app/invoice.xml:ro ghcr.io/roel4d/peppol_schematron:latest 2>/dev/null"
+      cmd = "docker run --rm #{env} -v #{invoice_file}:/app/invoice.xml:ro ghcr.io/mooroe/peppol_schematron:latest 2>/dev/null"
       # puts cmd
       svrl_content = `#{cmd}`
       parse_svrl_errors(svrl_content)

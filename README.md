@@ -55,7 +55,7 @@ invoice = Ubl::Invoice.new("UBL_BE")
 ```
 
 You can also validate the result. 
-You need Docker for the schematron validation. (https://github.com/roel4d/peppol_schematron)
+You need Docker for the schematron validation. (https://github.com/mooroe/peppol_schematron)
 With `schematron: false` you can disable this and only the xsd validation will run.
 ```ruby
 Tempfile.create("invoice.xml") do |invoice_file|
@@ -72,7 +72,7 @@ to install this gem onto your local machine, run `bundle exec rake install`. to 
 
 ## contributing
 
-bug reports and pull requests are welcome on github at https://github.com/roel4d/ubl.
+bug reports and pull requests are welcome on github at https://github.com/mooroe/ubl.
 
 ## license
 
